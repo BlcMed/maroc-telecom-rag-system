@@ -1,7 +1,5 @@
 chroma_db/
 data/
-data_test/
-delta_data/
 venv/
 __pycache__/
 .env

@@ -2,6 +2,7 @@ import streamlit as st
 
 TITLE="Maroc Telecom assistant"
 ASSISTANT_MESSAGE = "Message IAM Assistance"
+RAG=""
 
 def response_generator(prompt):
     response = f"response for {prompt} ..."
