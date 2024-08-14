@@ -1,11 +1,12 @@
-from indexer import load_index
-from agent import Llama_agent
+from .indexer import load_index
+from .agent import Llama_agent
 
 class LlamaIndexInterface:
 
     def __init__(self):
         self.index = load_index()
         self.agent = Llama_agent(index=self.index)
+        print(' llama interface initialized')
 
     def query(self, prompt):
         return self.agent.query(prompt)
