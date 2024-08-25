@@ -1,9 +1,13 @@
 from .indexer import load_index
 from .agent import Llama_agent
+from dotenv import load_dotenv
+import os
 
 class LlamaIndexInterface:
 
     def __init__(self):
+        load_dotenv()
+        os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
         self.index = load_index()
         self.agent = Llama_agent(index=self.index)
         print(' llama interface initialized')
