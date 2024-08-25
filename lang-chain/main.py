@@ -7,8 +7,11 @@ class LangChainInterface:
         os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
         print(' lang chain interface initialized')
 
-    def query(self, prompt):
-        return None
+    def query(qa_chain, prompt):
+        response = qa_chain({"query": prompt})
+        print(f"Question: {prompt}")
+        print(f"Réponse: {response}")
+        return response
 
 if __name__ == "__main__":
     interface = LangChainInterface()
