@@ -1,5 +1,3 @@
-# functions.py
-
 import os
 import logging
 import pandas as pd
@@ -13,7 +11,7 @@ from langchain.chains import RetrievalQA
 from dotenv import load_dotenv
 
 # Charger les variables d'environnement
-load_dotenv(dotenv_path='env.env')
+load_dotenv()
 
 # Récupérer la clé API et le chemin du répertoire
 api_key = os.getenv("OPENAI_API_KEY")
