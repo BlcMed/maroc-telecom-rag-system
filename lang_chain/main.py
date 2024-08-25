@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 import os
-from functions import create_qa_chain, create_vectorstore
+from .functions import create_qa_chain, create_vectorstore
 
 class LangChainInterface:
     def __init__(self):

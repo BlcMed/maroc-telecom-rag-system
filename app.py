@@ -1,5 +1,6 @@
 import streamlit as st
-from llama_index.main import LlamaIndexInterface
+#from llama_index.main import LlamaIndexInterface
+from lang_chain.main import LangChainInterface
 
 
 TITLE="Maroc Telecom assistant"
@@ -17,7 +18,8 @@ st.title(TITLE)
 
 # Initialize the RAG backend
 if 'interface' not in st.session_state:
-    st.session_state.interface = LlamaIndexInterface()
+    st.session_state.interface = LangChainInterface()
+    #st.session_state.interface = LlamaIndexInterface()
 
 # Initialize chat history
 if "messages" not in st.session_state:

@@ -1,11 +1,9 @@
-from functions import load_files_from_directory, split_text, create_vectorstore, similarity_search, setup_multi_query_retriever, create_qa_chain, ask_question
+from .functions import load_files_from_directory, split_text, create_vectorstore, similarity_search, setup_multi_query_retriever, create_qa_chain, ask_question
 import os
 
 def main():
     # Charger les fichiers
     data_path = os.getenv("DIRECTORY_PATH")
-    if not data_path:
-        raise ValueError("Le chemin du répertoire n'est pas défini dans l'environnement")
 
     # Créer la base de données vectorielle
     vectorstore = create_vectorstore(data_path=data_path)
