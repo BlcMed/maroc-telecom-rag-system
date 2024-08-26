@@ -1,11 +1,10 @@
 from llama_index.llms.openai import OpenAI
 from llama_index.agent.openai import OpenAIAgent
-from llama_index.core.tools import BaseTool, FunctionTool
+
 
 MODEL_NAME='gpt-4'
 
-def setup_agent():
-    tools=[] # to add latee
+def setup_agent(tools):
     llm = OpenAI(model=MODEL_NAME)
     agent = OpenAIAgent.from_tools(
         tools, llm=llm, verbose=True
@@ -14,7 +13,7 @@ def setup_agent():
 
 
 if __name__=='__main__':
-    agent = setup_agent()
+    agent = setup_agent(tools=[])
     response = agent.chat("what is Maroc Telecom")
     print(str(response))
 
