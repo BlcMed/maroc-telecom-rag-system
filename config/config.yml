@@ -1,7 +1,7 @@
 # rag configurations
 MODEL_NAME: 'gpt-4'
-CHUNK_SIZE: 500
-CHUNK_OVERLAP: 100
+CHUNK_SIZE: 512
+CHUNK_OVERLAP: 10
 TOP_K: 5
 
 

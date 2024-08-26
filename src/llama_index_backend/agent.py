@@ -1,21 +1,23 @@
 from llama_index.llms.openai import OpenAI
 from llama_index.agent.openai import OpenAIAgent
-from .indexer import load_index
+from .data_manager import initialize_index
 from .tools import generate_tools
 from ..base_agent import BaseAgent
 
-#MODEL_NAME='gpt-4'
 
 class LlamaIndexAgent(BaseAgent):
 
-    def __init__(self, model, data_path, vector_store_path):
+    def __init__(self, model, data_path, vector_store_path, chunk_size, chunk_overlap) -> None:
         super().__init__(
             model,
             data_path=data_path,
-            vector_store_path=vector_store_path
+            vector_store_path=vector_store_path,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap
         )
 
-        self.index = load_index(vector_store_path=self.vector_store_path)
+        #self.index = load_index(vector_store_path=self.vector_store_path)
+        self.index = initialize_index(data_path=data_path, vector_store_path=vector_store_path, chunk_size=chunk_size, chunk_overlap=chunk_overlap)
         tools = generate_tools(index=self.index)
         llm = OpenAI(model= model)
         self.agent = OpenAIAgent.from_tools(

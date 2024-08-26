@@ -10,6 +10,8 @@ if 'config' not in st.session_state:
     st.session_state.config = config
 
 MODEL_NAME = st.session_state.config.get('MODEL_NAME')
+CHUNK_SIZE = st.session_state.config.get('CHUNK_SIZE')
+CHUNK_OVERLAP = st.session_state.config.get('CHUNK_OVERLAP')
 DATA_PATH = st.session_state.config.get('DATA_PATH')
 VECTOR_STORE_PATH_LLAMA_INDEX = st.session_state.config.get('VECTOR_STORE_PATH_LLAMA_INDEX')
 VECTOR_STORE_PATH_LLANG_CHAIN = st.session_state.config.get('VECTOR_STORE_PATH_LLANG_CHAIN')
@@ -17,14 +19,16 @@ TITLE = st.session_state.config.get('TITLE')
 ASSISTANT_MESSAGE = st.session_state.config.get('ASSISTANT_MESSAGE')
 
 
-st.title(st.session_state.config.get('TITLE'))
+st.title(TITLE)
 
 # Initialize the RAG backend
 if 'agent' not in st.session_state:
     st.session_state.agent = LlamaIndexAgent(
         model = MODEL_NAME,
         data_path=DATA_PATH,
-        vector_store_path=VECTOR_STORE_PATH_LLAMA_INDEX
+        vector_store_path=VECTOR_STORE_PATH_LLAMA_INDEX,
+        chunk_size=CHUNK_SIZE,
+        chunk_overlap=CHUNK_OVERLAP
     )
 
 # Initialize chat history
