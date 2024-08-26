@@ -1,6 +1,6 @@
 import streamlit as st
-#from llama_index.main import LlamaIndexInterface
-from lang_chain.main import LangChainInterface
+from llama_index_backend.agent import LlamaIndexAgent
+#from lang_chain.main import LangChainInterface
 
 
 TITLE="Maroc Telecom assistant"
@@ -18,8 +18,7 @@ st.title(TITLE)
 
 # Initialize the RAG backend
 if 'interface' not in st.session_state:
-    st.session_state.interface = LangChainInterface()
-    #st.session_state.interface = LlamaIndexInterface()
+    st.session_state.interface = LlamaIndexAgent()
 
 # Initialize chat history
 if "messages" not in st.session_state:
@@ -40,7 +39,7 @@ if prompt :
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
     #response = response_generator(prompt)
-    response = st.session_state.interface.query(prompt=prompt)
+    response = st.session_state.interface.question(prompt=prompt)
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
