@@ -2,7 +2,7 @@ from llama_index.core import VectorStoreIndex
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
 
-VECTOR_STORE_PATH = './llama_index/chroma_db'
+VECTOR_STORE_PATH = './llama_index_backend/chroma_db'
 
 def load_index():
     db = chromadb.PersistentClient(path=VECTOR_STORE_PATH)

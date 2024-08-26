@@ -1,10 +1,12 @@
 from llama_index.llms.openai import OpenAI
 from llama_index.agent.openai import OpenAIAgent
+from .tools import generate_tools
 
 
 MODEL_NAME='gpt-4'
 
-def setup_agent(tools):
+def setup_agent(index):
+    tools = generate_tools(index=index)
     llm = OpenAI(model=MODEL_NAME)
     agent = OpenAIAgent.from_tools(
         tools, llm=llm, verbose=True
@@ -13,14 +15,6 @@ def setup_agent(tools):
 
 
 if __name__=='__main__':
-    agent = setup_agent(tools=[])
+    agent = setup_agent(index=None)
     response = agent.chat("what is Maroc Telecom")
     print(str(response))
-
-class Llama_agent:
-    def __init__(self, index):
-        self.query_engine = index.as_query_engine()
-
-    def query(self, prompt):
-        response = self.query_engine.query(prompt)
-        return response

@@ -1,5 +1,5 @@
 import streamlit as st
-from llama_index.main import LlamaIndexInterface
+from llama_index_backend.main import LlamaIndexInterface
 #from lang_chain.main import LangChainInterface
 
 

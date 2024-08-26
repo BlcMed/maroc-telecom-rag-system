@@ -1,5 +1,5 @@
 from .indexer import load_index
-from .agent import Llama_agent
+from .agent import setup_agent
 from dotenv import load_dotenv
 import os
 
@@ -9,11 +9,12 @@ class LlamaIndexInterface:
         load_dotenv()
         os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
         self.index = load_index()
-        self.agent = Llama_agent(index=self.index)
+        self.agent = setup_agent(index=self.index)
         print(' llama interface initialized')
 
     def query(self, prompt):
-        return self.agent.query(prompt)
+        response = self.agent.chat(prompt)
+        return response
 
 if __name__ == "__main__":
     interface = LlamaIndexInterface()
