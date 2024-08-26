@@ -12,6 +12,8 @@ if 'config' not in st.session_state:
 MODEL_NAME = st.session_state.config.get('MODEL_NAME')
 CHUNK_SIZE = st.session_state.config.get('CHUNK_SIZE')
 CHUNK_OVERLAP = st.session_state.config.get('CHUNK_OVERLAP')
+SIMILARITY_TOP_K = st.session_state.config.get('SIMILARITY_TOP_K')
+SIMILARITY_CUTOFF = st.session_state.config.get('SIMILARITY_CUTOFF')
 DATA_PATH = st.session_state.config.get('DATA_PATH')
 VECTOR_STORE_PATH_LLAMA_INDEX = st.session_state.config.get('VECTOR_STORE_PATH_LLAMA_INDEX')
 VECTOR_STORE_PATH_LLANG_CHAIN = st.session_state.config.get('VECTOR_STORE_PATH_LLANG_CHAIN')
@@ -28,7 +30,9 @@ if 'agent' not in st.session_state:
         data_path=DATA_PATH,
         vector_store_path=VECTOR_STORE_PATH_LLAMA_INDEX,
         chunk_size=CHUNK_SIZE,
-        chunk_overlap=CHUNK_OVERLAP
+        chunk_overlap=CHUNK_OVERLAP,
+        similarity_cutoff=SIMILARITY_CUTOFF,
+        similarity_top_k=SIMILARITY_TOP_K
     )
 
 # Initialize chat history
@@ -53,7 +57,7 @@ if prompt :
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
         st.markdown(response)
-        st.markdown(f"> **Info Source:**\n> {source}")
+        #st.markdown(f"> **Info Source:**\n> {source}")
 
     # Add assistant response to chat history
     st.session_state.messages.append({"role": "assistant", "content": response})
