@@ -1,6 +1,6 @@
 import streamlit as st
-from llama_index_backend.agent import LlamaIndexAgent
-#from lang_chain.main import LangChainInterface
+from src.llama_index_backend.agent import LlamaIndexAgent
+#from src.lang_chain.main import LangChainInterface
 
 
 TITLE="Maroc Telecom assistant"
