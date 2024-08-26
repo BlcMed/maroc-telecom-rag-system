@@ -1,0 +1,11 @@
+# general configurations
+MODEL_NAME: 'gpt-4'
+
+# path configurations
+DATA_PATH: './data/'
+VECTOR_STORE_PATH_LLAMA_INDEX: './vector_stores/chroma_db_llama_index'
+VECTOR_STORE_PATH_LLANG_CHAIN: './vector_stores/chroma_db_lang_chain'
+
+# streamlit configurations
+TITLE: "Maroc Telecom Assistant"
+ASSISTANT_MESSAGE: "Message IAM Assistance"

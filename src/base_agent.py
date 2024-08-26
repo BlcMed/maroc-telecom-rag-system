@@ -4,9 +4,12 @@ from dotenv import load_dotenv
 
 
 class BaseAgent(ABC):
-    def __init__(self) -> None:
+    def __init__(self, model, data_path, vector_store_path) -> None:
         load_dotenv()
         os.environ['OPENAI_API_KEY']=os.getenv("OPENAI_API_KEY")
+        self.model=model
+        self.data_path = data_path
+        self.vector_store_path = vector_store_path
     
     @abstractmethod
     def question(self,prompt):
