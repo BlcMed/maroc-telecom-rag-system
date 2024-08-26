@@ -1,5 +1,9 @@
-# general configurations
+# rag configurations
 MODEL_NAME: 'gpt-4'
+CHUNK_SIZE: 500
+CHUNK_OVERLAP: 100
+TOP_K: 5
+
 
 # path configurations
 DATA_PATH: './data/'

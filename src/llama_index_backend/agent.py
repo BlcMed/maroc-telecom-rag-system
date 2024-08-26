@@ -25,11 +25,23 @@ class LlamaIndexAgent(BaseAgent):
 
     def question(self, prompt):
         response = self.agent.chat(prompt)
-        return response
+        source = response.metadata
+        return response, source
 
 
 if __name__ == "__main__":
-    agent = LlamaIndexAgent()
+    import yaml
+    CONFIG_FILE_PATH = './config/config.yml'
+    with open(CONFIG_FILE_PATH, 'r') as file:
+        config = yaml.safe_load(file)
+    MODEL_NAME = config.get('MODEL_NAME')
+    DATA_PATH = config.get('DATA_PATH')
+    VECTOR_STORE_PATH_LLAMA_INDEX = config.get('VECTOR_STORE_PATH_LLAMA_INDEX')
+    agent = LlamaIndexAgent(
+        model = MODEL_NAME,
+        data_path=DATA_PATH,
+        vector_store_path=VECTOR_STORE_PATH_LLAMA_INDEX
+    )
     question="Quels sont les critères pour la reconnaissance d'un élément de propriété, d'équipement et de matériel (PPE) comme actif selon les politiques comptables IFRS décrites ?"
     response = agent.question(question)
-    print(response)
+    print(type(response))
